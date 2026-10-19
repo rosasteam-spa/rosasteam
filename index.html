@@ -3,188 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestro Salón de Belleza</title>
+    <title>Rosa's Team - Spa Capilar</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --rosa-empolvado: #F3E1DC;
+            --rosa-medio: #E5C3BA;
+            --blanco: #FFFFFF;
+            --beige: #F9F6F0;
+            --dorado: #D4AF37;
+            --dorado-oscuro: #AA820A;
+            --texto-oscuro: #4A3E3D;
+            --texto-suave: #7A6E6D;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #fcf9f6;
-            color: #333;
-        }
-        header {
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
-        p.subtitle { font-style: italic; color: #aaa; margin-top: 0.5rem; }
-        
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        /* Sección Salón */
-        .salon-section {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
-        }
-        .salon-text { flex: 1; }
-        .salon-images {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .salon-images img {
-            width: 100%;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-sizing: border-box;
         }
 
-        /* Sección Tratamientos */
-        .tratamientos-section {
-            margin-bottom: 3rem;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--beige);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
         }
-        .grid-tratamientos {
+
+        h1, h2, h3, .brand-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .cursive {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.5rem;
+            color: var(--dorado-oscuro);
+            text-transform: none;
+            letter-spacing: 0;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        a {
+            text-color: inherit;
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            transition: all 0.3s ease;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--rosa-empolvado);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-box {
+            text-align: center;
+        }
+
+        .logo-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--texto-oscuro);
+            border-bottom: 1px solid var(--dorado);
+            padding-bottom: 2px;
+            letter-spacing: 3px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--texto-suave);
+            margin-top: 3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--dorado);
+            transition: width 0.3s ease;
+        }
+
+        nav ul a:hover::after {
+            width: 100%;
+        }
+
+        nav ul a:hover {
+            color: var(--dorado-oscuro);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        /* Main Hero Button */
+        .btn-gold {
+            background-color: var(--blanco);
+            color: var(--texto-oscuro);
+            border: 1px solid var(--dorado);
+            padding: 14px 30px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--rosa-empolvado);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .btn-gold:hover::before {
+            width: 100%;
+        }
+
+        .btn-gold:hover {
+            color: var(--texto-oscuro);
+            border-color: var(--rosa-medio);
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            color: var(--texto-oscuro);
+        }
+
+        .section-title::after {
+            content: '♦';
+            display: block;
+            font-size: 0.8rem;
+            color: var(--dorado);
+            margin-top: 10px;
+            letter-spacing: 0;
+        }
+
+        /* Hero Section */
+        #inicio {
+            padding: 0;
+            max-width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(249, 246, 240, 0.75), rgba(243, 225, 224, 0.65)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 4px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--texto-oscuro);
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--texto-suave);
+            font-style: italic;
+        }
+
+        /* Sobre Mí */
+        #sobre-mi {
+            background-color: var(--blanco);
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 50px;
+            align-items: center;
+            padding: 40px 20px;
         }
-        .card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-        }
-        .card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-        }
-        .card-content { padding: 1.5rem; }
 
-        /* Galería de Estilos */
-        .galeria-section h2 { text-align: center; margin-bottom: 2rem; }
-        .grid-galeria {
+        .about-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border: 10px solid var(--beige);
+            outline: 1px solid var(--rosa-medio);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+        }
+
+        .about-text h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: var(--dorado-oscuro);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--texto-suave);
+            text-align: justify;
+        }
+
+        /* Servicios Card Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--blanco);
+            padding: 35px 25px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid var(--rosa-empolvado);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--dorado);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--dorado-oscuro);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--texto-oscuro);
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+        }
+
+        /* Precios */
+        #precios {
+            background-color: var(--blanco);
+            max-width: 100%;
+        }
+
+        .pricing-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--rosa-medio);
+        }
+
+        .price-name {
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .price-details {
+            font-size: 0.85rem;
+            color: var(--texto-suave);
+            display: block;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .price-value {
+            font-weight: 600;
+            color: var(--dorado-oscuro);
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        .pricing-notice {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--texto-suave);
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* Instalaciones */
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .galeria-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-        .galeria-item img:hover {
-            transform: scale(1.03);
+            gap: 20px;
         }
 
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            border-radius: 4px;
+            border: 1px solid var(--rosa-empolvado);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            color: white;
+            padding: 15px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Novedades y Promos */
+        #novedades {
+            background-color: var(--rosa-empolvado);
+            max-width: 100%;
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .news-card {
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 4px solid var(--dorado);
+        }
+
+        .news-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: var(--texto-oscuro);
+        }
+
+        .news-card p {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+        }
+
+        /* Contacto */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--rosa-empolvado);
+            padding-bottom: 8px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-list i {
+            color: var(--dorado-oscuro);
+            width: 20px;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--blanco);
+            border: 1px solid var(--rosa-medio);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--texto-oscuro);
+        }
+
+        .social-links a:hover {
+            background-color: var(--rosa-empolvado);
+            color: var(--dorado-oscuro);
+            border-color: var(--dorado);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--rosa-empolvado);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 4rem;
+            padding: 20px;
+            color: var(--texto-suave);
+            font-style: italic;
+        }
+
+        /* Footer & Legal */
+        footer {
+            background-color: var(--texto-oscuro);
+            color: var(--rosa-empolvado);
+            padding: 40px 20px 20px 20px;
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--rosa-empolvado);
+            margin-left: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--blanco);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .about-container, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .about-img {
+                height: 350px;
+            }
+            body {
+                padding-top: 140px;
+            }
+            #inicio {
+                height: calc(100vh - 140px);
+            }
+        }
+
+        @media (min-width: 769px) {
+            body {
+                padding-top: 85px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header / Navegación -->
     <header>
-        <h1>BIENVENIDA A NUESTRO OASIS</h1>
-        <p class="subtitle">Estilo, relax y cuidado integral para tu cabello</p>
+        <div class="nav-container">
+            <div class="logo-box">
+                <div class="logo-title">Rosa's Team</div>
+                <div class="logo-subtitle">Spa Capilar</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#precios">Tarifas</a></li>
+                    <li><a href="#instalaciones">Instalaciones</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div>
+                <a href="https://wa.me/34640657273?text=Hola,%20me%20gustaría%20solicitar%20una%20cita." target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Cita por WhatsApp
+                </a>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        
-        <!-- SECCIÓN 1: EL SALÓN (Ideal para los planos e interiores) -->
-        <section class="salon-section">
-            <div class="salon-text">
-                <h2>Conoce nuestro espacio</h2>
-                <p>Hemos diseñado un ambiente exclusivo, inspirado en la armonía y el bienestar. Un lugar donde desconectar del día a día mientras nuestros profesionales cuidan de ti.</p>
-                <p>Disponemos de zonas de lavado relajantes, tocadores amplios y un rincón zen para que tu experiencia sea inolvidable de principio a fin.</p>
-            </div>
-            <div class="salon-images">
-                <!-- Tu tercera imagen (Plano 3D del salón) -->
-                <img src="salon_plano.png" alt="Plano de distribución del salón">
-                <!-- Tu cuarta imagen (Zona zen del salón real) -->
-                <img src="salon_interior.png" alt="Zona de espera y relax con Buda">
-            </div>
-        </section>
+    <!-- 1. Inicio -->
+    <section id="inicio">
+        <div class="hero-content">
+            <span class="cursive">Tu estilo, tu poder, donde tu belleza florece</span>
+            <h2>Tu bienestar comienza aquí</h2>
+            <p>Una experiencia de belleza, relajación y atención personalizada.</p>
+            <a href="https://wa.me/34640657273?text=Hola,%20quiero%20reservar%20una%20experiencia." target="_blank" class="btn-gold">Reserva tu experiencia</a>
+        </div>
+    </section>
 
-        <!-- SECCIÓN 2: TRATAMIENTOS ESPECIALIZADOS (Ideal para procesos técnicos) -->
-        <section class="tratamientos-section">
-            <h2>Nuestros Tratamientos Premium</h2>
-            <div class="grid-tratamientos">
-                
-                <div class="card">
-                    <!-- Tu segunda imagen (Lavado con espuma e ICON) -->
-                    <img src="tratamiento_lavado.png" alt="Terapia de lavado y masaje capilar">
-                    <div class="card-content">
-                        <h3>Hidratación y Masaje Sensorial</h3>
-                        <p>Disfruta de un lavado terapéutico con productos de alta gama que devuelven el brillo, la elasticidad y la fuerza natural a tu fibra capilar.</p>
+    <!-- 2. Sobre Mí -->
+    <section id="sobre-mi">
+        <div class="about-container">
+            <img src="https://images.unsplash.com/photo-1595959183075-c1d945103d31?auto=format&fit=crop&w=800&q=80" alt="Rosa - Estilista" class="about-img">
+            <div class="about-text">
+                <span class="cursive">Conóceme</span>
+                <h2 style="text-align: left; margin-bottom: 20px; font-size: 1.8rem;">Sobre Nosotros</h2>
+                <h3>Rosa, más de 20 años de experiencia</h3>
+                <p>Nuestra filosofía se basa en ofrecer una atención cercana, bienestar absoluto y tratamientos totalmente personalizados para el cuidado de tu cabello y cuero cabelludo.</p>
+                <p>Especializada en alta peluquería, he ampliado mis servicios incorporando un avanzado concepto de <strong>SPA Capilar</strong>, combinando la estética clásica con la salud y relajación profunda que tu cuerpo y mente necesitan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Servicios -->
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-spa"></i></div>
+                <h3>SPA Capilar Personalizado</h3>
+                <p>Sumerge tu mente y cabello en un oasis de relajación. Tratamiento integral de hidratación, estimulación y masajes capilares sensoriales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                <h3>Diagnóstico y Tricograma</h3>
+                <p>Análisis minucioso del estado de tu cuero cabelludo y fibra mediante microcámara avanzada para aplicar la solución idónea.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hand-holding-water"></i></div>
+                <h3>Salud del Cuero Cabelludo</h3>
+                <p>Tratamientos específicos diseñados profesionalmente para combatir la seborrea (grasa), descamación, caspa y la caída capilar.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Tratamientos con Barros</h3>
+                <p>Coloración y terapia botánica 100% orgánica que respeta la estructura capilar, aportando un brillo inigualable y fuerza.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scissors"></i></div>
+                <h3>Visagismo y Peluquería</h3>
+                <p>Asesoría de imagen integral basada en tus rasgos. Cortes, color, peinados y técnicas de vanguardia que potencian tu poder.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Tratamientos y Precios -->
+    <section id="precios">
+        <h2 class="section-title">Tratamientos y Tarifas</h2>
+        <div class="pricing-container">
+            
+            <div class="price-item">
+                <div>
+                    <span class="price-name">Diagnóstico Capilar Completo + Tricograma</span>
+                    <span class="price-details">Duración: 30 min | Recomendado antes de cualquier terapia.</span>
+                </div>
+                <div class="price-value">Consultar</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <span class="price-name">Sesión SPA Capilar Premium</span>
+                    <span class="price-details">Duración: 60 min | Beneficios: Hidratación profunda y relajación sensorial.</span>
+                </div>
+                <div class="price-value">Consultar</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <span class="price-name">Terapia Anticaída o Descamación</span>
+                    <span class="price-details">Duración: 45 min | Productos orgánicos reguladores de alta eficacia.</span>
+                </div>
+                <div class="price-value">Consultar</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <span class="price-name">Terapia Botánica con Barros</span>
+                    <span class="price-details">Duración: Varía según el cabello | Color y nutrición natural sin químicos.</span>
+                </div>
+                <div class="price-value">Consultar</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <span class="price-name">Asesoría de Visagismo + Corte y Estilo</span>
+                    <span class="price-details">Estudio personalizado de facciones para un estilo óptimo.</span>
+                </div>
+                <div class="price-value">Consultar</div>
+            </div>
+
+            <p class="pricing-notice">* Las tarifas finales, duración exacta y frecuencia recomendada de los servicios serán confirmadas de manera personalizada tras realizar el diagnóstico en el salón.</p>
+        </div>
+    </section>
+
+    <!-- 5. Instalaciones -->
+    <section id="instalaciones">
+        <h2 class="section-title">Nuestras Instalaciones</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=600&q=80" alt="Recepción">
+                <div class="gallery-caption">Recepción y Espera</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=80" alt="Tocadores">
+                <div class="gallery-caption">Zona de Tocadores</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Zona Spa">
+                <div class="gallery-caption">Lavado y SPA Capilar</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=600&q=80" alt="Diagnóstico">
+                <div class="gallery-caption">Camilla y Diagnóstico</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Ofertas y Novedades -->
+    <section id="novedades">
+        <h2 class="section-title" style="margin-bottom: 40px;">Ofertas y Novedades</h2>
+        <div class="news-container">
+            <div class="news-card">
+                <h3>Bono de Bienestar Capilar</h3>
+                <p>Pregunta por nuestros bonos de varias sesiones para tratamientos de cuero cabelludo y SPA con tarifas especiales.</p>
+            </div>
+            <div class="news-card">
+                <h3>Cuidado en Casa</h3>
+                <p>Próximamente publicaremos consejos exclusivos para mantener la salud de tu cuero cabelludo desde casa con productos recomendados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6, 7 y 8. Contacto y Ubicación -->
+    <section id="contacto">
+        <h2 class="section-title">Contacto y Ubicación</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Rosa's Team Spa Capilar</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Villacañas (Toledo) - <em>Dirección exacta pendiente de confirmar</em></span></li>
+                    <li><i class="fas fa-phone-alt"></i> <span>640 657 273</span></li>
+                    <li><i class="fas fa-clock"></i> <span>Horarios: <em>Pendientes de confirmar</em></span></li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/" target="_blank" title="Síguenos en Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div style="margin-top: 35px;">
+                    <a href="https://wa.me/34640657273?text=Hola,%20me%20gustaría%20solicitar%20una%20cita." target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Solicitar cita por WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div>
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--rosa-medio); margin-bottom: 15px;"></i>
+                        <p>El mapa interactivo de Google Maps se integrará aquí en cuanto se confirme la dirección del local.</p>
                     </div>
                 </div>
-
-                <div class="card">
-                    <!-- Tu octava imagen (Diagnóstico con microcámara) -->
-                    <img src="tratamiento_diagnostico.png" alt="Diagnóstico capilar avanzado">
-                    <div class="card-content">
-                        <h3>Diagnóstico Capilar Avanzado</h3>
-                        <p>Analizamos la salud de tu cuero cabelludo con tecnología de precisión para ofrecerte soluciones personalizadas y tratamientos a tu medida.</p>
-                    </div>
-                </div>
-
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SECCIÓN 3: GALERÍA DE RESULTADOS (Ideal para los peinados finales) -->
-        <section class="galeria-section">
-            <h2>Nuestros Trabajos e Inspiración</h2>
-            <div class="grid-galeria">
-                
-                <div class="galeria-item">
-                    <!-- Tu primera imagen (Ondas largas perfectas) -->
-                    <img src="peinado_ondas_largas.png" alt="Melena larga con ondas al agua">
-                </div>
-
-                <div class="galeria-item">
-                    <!-- Tu quinta imagen (Corte bob con ondas) -->
-                    <img src="peinado_bob.png" alt="Corte bob con ondas suaves">
-                </div>
-
-                <div class="galeria-item">
-                    <!-- Tu sexta imagen (Balayage / Ondas rubias) -->
-                    <img src="peinado_balayage.png" alt="Cabello largo con mechas balayage">
-                </div>
-
-                <div class="galeria-item">
-                    <!-- Tu séptima imagen (Rizos definidos frente al Buda) -->
-                    <img src="peinado_rizos.png" alt="Cabello rizado perfectamente definido">
-                </div>
-
-            </div>
-        </section>
-
-    </div>
-
+    <!-- Footer / Información Legal -->
     <footer>
-        <p>&copy; 2026 Salón de Belleza. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div>
+                <strong>Rosa's Team Spa Capilar</strong>
+                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 5px;">Tu estilo, tu poder, donde tu belleza florece.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#contacto" onclick="alert('Sección de Aviso Legal (Texto sujeto a personalización jurídica).'); return false;">Aviso Legal</a>
+                <a href="#contacto" onclick="alert('Sección de Política de Privacidad y Cookies (Conforme a la RGPD. Las imágenes de clientes cuentan con autorización explícita).'); return false;">Política de Privacidad</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Rosa's Team Spa Capilar. Todos los derechos reservados.
+        </div>
     </footer>
 
 </body>
